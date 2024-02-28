@@ -14,7 +14,6 @@ function generate_pwd($pdw_length, $characters)
         $random_index = rand(0, 93);
         for ($i = 0; $i <= strlen($characters); $i++) {
             if ($i == $random_index) {
-                echo '"' . $characters[$i] . '" ';
                 $pwd_generated .= $characters[$i];
             }
             ;
