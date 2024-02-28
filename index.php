@@ -1,15 +1,24 @@
 <?php
 
+/* Importo i file .php  che mi servono */
 require_once __DIR__ . "./partials/data.php";
 require_once __DIR__ . "./partials/functions.php";
 
+/* Controllo se nel form è arrivato qualcosa*/
 $form_sent = !empty($_GET);
+
 if ($form_sent) {
+    // Recupero il dato lunghezza pwd
     $pdw_length = (int) $_GET["pdw_length"];
+
+    /* Apro la sessione in questo momento */
     session_start();
+    /* Applico la mia funzione importata */
     $pwd = generate_pwd($pdw_length, $characters);
-    header("Location: ./partials/result.php");
+    /* Invio all'Array SESSION il dato per renderlo disponibile */
     $_SESSION["pwd"] = $pwd;
+    /* Reindirizzo nella pagina di mostra risultato */
+    header("Location: ./partials/result.php");
 }
 ?>
 
@@ -36,6 +45,7 @@ if ($form_sent) {
             </div>
             <div class="col-2"><button class="btn btn-secondary">Genera PDW</button></div>
         </form>
+        <!-- mostro il risultato se form inviato -->
         <?php if ($form_sent): ?>
             <div> La PWD genereta è:
                 <?php echo $pwd ?? ""; ?>

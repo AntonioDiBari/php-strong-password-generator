@@ -1,5 +1,8 @@
 <?php
+
+/* Apro la sessione così da avere l'array SESSION */
 session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -15,13 +18,14 @@ session_start();
 </head>
 
 <body>
-    <div class="container mt-5">
+    <div class="container mt-5 alert alert-success">
         <h1>
             Hai generato la tua password con successo !!
         </h1>
         <h5>
             Eccola:
-            <?= $_SESSION["pwd"]; ?>
+            <!-- Stampo il dato utile -->
+            <input type="text" value="<?= $_SESSION["pwd"]; ?>">
         </h5>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
